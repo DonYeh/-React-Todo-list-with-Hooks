@@ -1,4 +1,4 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import TodoList from "./TodoList";
 import uuidv4 from "uuid/v4";
 
@@ -10,6 +10,17 @@ function App() {
 	]);
 
 	const todoNameRef = useRef();
+
+	const LOCAL_KEY = "todoApp.todos";
+
+	useEffect(() => {
+		const storedTodos = JSON.parse(localStorage.getItem(LOCAL_KEY));
+		if (storedTodos) setTodos(storedTodos);
+	}, []);
+
+	useEffect(() => localStorage.setItem(LOCAL_KEY, JSON.stringify(todos)), [
+		todos,
+	]); //saves to local storage whenver todos changes
 
 	function handleAddTodo(e) {
 		// const myTodos = [...todos, newTodo];
