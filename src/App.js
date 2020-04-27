@@ -1,5 +1,6 @@
 import React, { useState, useRef } from "react";
 import TodoList from "./TodoList";
+import uuidv4 from "uuid/v4";
 
 function App() {
 	const [todos, setTodos] = useState([
@@ -18,8 +19,13 @@ function App() {
 		// console.log("todo added", newTodo);
 		const updatedTodos = [...todos, newTodo];
 		// console.log(updatedTodos);
+		setTodos((oldTodos) => {
+			return [
+				...oldTodos,
+				{ id: uuidv4(), name: newTodo, complete: false },
+			];
+		});
 		todoNameRef.current.value = "";
-		setTodos(updatedTodos);
 		// console.log(todos);
 	}
 
