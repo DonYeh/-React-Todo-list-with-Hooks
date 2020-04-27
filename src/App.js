@@ -47,6 +47,11 @@ function App() {
 		// console.log(todos);
 	}
 
+	function handleClearTodos() {
+		const uncompletedTodos = todos.filter((todo) => !todo.complete);
+		setTodos(uncompletedTodos);
+	}
+
 	return (
 		<>
 			<TodoList todos={todos} toggleTodo={toggleTodo} />
@@ -56,7 +61,7 @@ function App() {
 				placeholder="enter Todo here"
 			/>
 			<button onClick={handleAddTodo}> Add Todo</button>
-			<button> Clear Completed</button>
+			<button onClick={handleClearTodos}> Clear Completed</button>
 			<div>
 				{" "}
 				{todos.filter((todo) => !todo.complete).length} of Todos left{" "}
