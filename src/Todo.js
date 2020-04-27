@@ -1,5 +1,9 @@
 import React from "react";
 
 export default function Todo({ todo }) {
-	return <div>{todo}</div>;
+	return (
+		<div>
+			<label>{todo.name}</label>
+		</div>
+	);
 }
