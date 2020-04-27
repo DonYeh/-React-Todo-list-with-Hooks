@@ -57,7 +57,10 @@ function App() {
 			/>
 			<button onClick={handleAddTodo}> Add Todo</button>
 			<button> Clear Completed</button>
-			<div> # of Todos left </div>
+			<div>
+				{" "}
+				{todos.filter((todo) => !todo.complete).length} of Todos left{" "}
+			</div>
 		</>
 	);
 }
