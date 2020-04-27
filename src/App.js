@@ -22,13 +22,20 @@ function App() {
 		todos,
 	]); //saves to local storage whenver todos changes
 
+	function toggleTodo(id) {
+		const newTodos = [...todos];
+		const todo = newTodos.find((todo) => todo.id === id);
+		todo.complete = !todo.complete;
+		setTodos(newTodos);
+	}
+
 	function handleAddTodo(e) {
 		// const myTodos = [...todos, newTodo];
 		// console.log(myTodos);
 		// setTodos(myTodos);
 		const newTodo = todoNameRef.current.value;
 		// console.log("todo added", newTodo);
-		const updatedTodos = [...todos, newTodo];
+		// const updatedTodos = [...todos, newTodo];
 		// console.log(updatedTodos);
 		setTodos((oldTodos) => {
 			return [
@@ -42,7 +49,7 @@ function App() {
 
 	return (
 		<>
-			<TodoList todos={todos} />
+			<TodoList todos={todos} toggleTodo={toggleTodo} />
 			<input
 				ref={todoNameRef}
 				type="text"
