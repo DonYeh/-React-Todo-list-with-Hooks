@@ -1,9 +1,8 @@
 import React, { useState } from "react";
 import TodoList from "./TodoList";
-import Todo from "./Todo";
 
 function App() {
-	const [todos, setTodos] = useState(["Todo1, Todo2, Todo3"]);
+	const [todos, setTodos] = useState(["Todo1, Todo2, Todo3, Todo4"]);
 
 	return (
 		<>
@@ -11,7 +10,7 @@ function App() {
 			<input type="text" placeholder="enter Todo here" />
 			<button> Add Todo</button>
 			<button> Clear Completed</button>
-			<div> {todos.length} of Todos left </div>
+			<div> # of Todos left </div>
 		</>
 	);
 }
